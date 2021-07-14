@@ -186,11 +186,14 @@ The overall accuracy looks to be better for the Random forest model when compare
 
 We also wanted to model using a Nueral Network to see if accuracy is improved.
 
-|negative| 127| 21| 3|
-|neutral| 889| 543| 129|
-|positive| 535| 172| 146|
-|scores| negative| neutral| positive|
+|Class| Negative| Neutral| Positive|
+|:-------| :-------| :-------| :-------|
+|Negative| 127| 21| 3|
+|Neutral| 889| 543| 129|
+|Positive| 535| 172| 146|
 
+|Score| Value|
+|:-------| :-------|
 |Precision:| 0.08188265635074146|
 |Recall:| 0.8410596026490066|
 
@@ -255,14 +258,4 @@ This can be done by finding tweets for the latest realease of the ipad, iphone, 
 
 #### Gather data about products from similer companies: 
 There may be tweets about the latest samsung, t-mobile, LG, Motorola phones that we could compare.
-
-
-
-
-
-
-
-
-
-
 
