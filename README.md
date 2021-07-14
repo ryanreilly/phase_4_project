@@ -40,7 +40,7 @@ The first thing that we are taking care of are the missing values. The tweet col
 
 Checking for row duplicates in the tweet column and found 22 of duplicates, these rows are romoved from the dataset as well.
 
-### Classifications
+### Classification Labels
 
 The rows that have the "I can't tell" label are being removed. We don't think those rows don't really tell us anything and it wouldn't be helpful to predict. Finial we renamed the class lables:
 
@@ -52,6 +52,43 @@ The rows that have the "I can't tell" label are being removed. We don't think th
 
 ## Feature Engineering
 
+Creat a new column called that groups the products together by brand under a column for exploratory analysis.
+
+## Exploratory Data Analysis
+
+### What are the classes for the outcome?
+
+![classes](images/classes.png)
+
+### How are the length of the tweets distributed?
+
+![character_hist](images/character_hist.png)
+
+The average tweet length is around 120 characters.
+
+### How many words are in the tweets?
+
+![word_hist](images/word_hist.png)
+
+There looks to be around 20 words.
+
+### What are the most common stop words?
+
+![stopwords](images/stopwords.png)
+
+The most common stopwords are the, to, at, and for, which is not suprising.
+
+### How are the sentiments for brand?
+
+![brand](images/brand.png)
+
+Apple looks to have more negative and nuetral tweets than Google.
+
+### How many negative sentiments are there for each Apple mention?
+
+![apple_product](images/apple_product.png)
+
+The iphone and ipad look to have
 
 
 
