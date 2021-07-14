@@ -99,11 +99,17 @@ We did a little preprocessing that we would need for modeling and some further E
 After we preprocessed, we wanted to take a look at the wordclouds for negative tweets to highlight common words used to describe specific products.
 
 ### For negative tweets, how were users describing the iPad?
+
 ![ipad_wordcloud](images/ipad_wordcloud.png)
+
 ### For negative tweets, how were users describing the iphone?
+
 ![iphone_wordcloud](images/iphone_wordcloud.png)
+
 ### For negative tweets, how were users describing the Google?
+
 ![google_wordcloud](images/google_wordcloud.png)
+
 ## Modeling
 
 ### Dummy Model
@@ -116,7 +122,7 @@ The dummy model is showing that if we were to classify every tweet by the most c
 
 #### Training Predictions
 
-![train_pred_base_fsm](images.train_pred_base_fsm.png)
+![train_pred_base_fsm](images/train_pred_base_fsm.pngv)
 
 |scores| precision| recall| f1-score| support|
 |:-------| :-------| :-------| :-------| :-------|
@@ -128,9 +134,127 @@ The dummy model is showing that if we were to classify every tweet by the most c
 |macro avg| 0.99| 0.99| 0.99| 5982|
 |weighted avg| 0.99| 0.99| 0.99| 5982|
 
+#### Testing Predictions
 
+![testing Predictions](images/test_pred_base_fsm.png)
 
+|scores| precision| recall| f1-score| support|
+|:-------| :-------| :-------| :-------| :-------|
+|negative| 0.65| 0.16| 0.26| 151|
+|neutral| 0.70| 0.88| 0.78| 1561|
+|positive| 0.65| 0.43| 0.52| 853|
+| | | | | |
+|accuracy| | | 0.69| 2565|
+|macro avg| 0.67| 0.49| 0.52| 2565|
+|weighted avg| 0.68| 0.69| 0.66| 2565|
 
+We are focused on increasing the recall of the negative sentiment and on the baseline model the recall is 0.16.
+
+### Models Using Hyperparameter Tuning and Pipelines
+
+#### Naive Bayes
+
+![naive_bayes](images/naive_bayes.png)
+
+|scores| precision| recall| f1-score| support|
+|:-------| :-------| :-------| :-------| :-------|
+|negative| 0.20| 0.54| 0.30| 151|
+|neutral| 0.78| 0.56| 0.65| 1561|
+|positive| 0.50| 0.61| 0.55| 853|
+| | | | | |
+|accuracy| | | 0.57| 2565|
+|macro avg| 0.49| 0.57| 0.50| 2565|
+|weighted avg| 0.65| 0.57| 0.59| 2565|
+
+#### Random Forest
+
+![random_forest](images/random_forest.png)
+
+|scores| precision| recall| f1-score| support|
+|:-------| :-------| :-------| :-------| :-------|
+|negative| 0.40| 0.28| 0.33| 151|
+|neutral| 0.73| 0.80| 0.76| 1561|
+|positive| 0.60| 0.53| 0.56| 853|
+| | | | | |
+|accuracy| | | 0.68| 2565|
+|macro avg| 0.58| 0.54| 0.55| 2565|
+|weighted avg| 0.67| 0.68| 0.67| 2565|
+
+The overall accuracy looks to be better for the Random forest model when compared to the Naive Bayes model. While both models tend to do better in recall, Naive Bayes does considerably better than Random Forest. However, we feel that there is too much accuracy we are giving up by using the Naive Bayes Model. We will move forward with the random forest model. But first, we will try a Nueral Network model.
+
+#### Neural Network
+
+We also wanted to model using a Nueral Network to see if accuracy is improved.
+
+|negative| 127| 21| 3|
+|neutral| 889| 543| 129|
+|positive| 535| 172| 146|
+|scores| negative| neutral| positive|
+
+|Precision:| 0.08188265635074146|
+|Recall:| 0.8410596026490066|
+
+While the accuracy of the Nueral Network improved, it did not do a good job of predicting any negative tweets. Thus we decided to chose the random forest model as our final model.
+
+## Final Model Evaluation - Tuned Random Forest Model
+
+### Final Model
+
+![final_model_random_forest](images/final_model_random_forest.png)
+
+|scores| precision| recall| f1-score| support|
+|:-------| :-------| :-------| :-------| :-------|
+|negative| 0.40| 0.28| 0.33| 151|
+|neutral| 0.73| 0.80| 0.76| 1561|
+|positive| 0.60| 0.53| 0.56| 853|
+| | | | | |
+|accuracy| | | 0.68| 2565|
+|macro avg| 0.58| 0.54| 0.55| 2565|
+|weighted avg| 0.67| 0.68| 0.67| 2565|
+
+While our accuracy dipped from 0.69 in our baseline model to 0.68 in our tuned model, we did see a significant increase in our recall score. Our recall score increased from 0.16 to 0.28, an increase of 75%. This was the result of employing SMOTE, our resampling technique to create more observations of the negative class.
+
+### Feature importance
+
+|Name| Importance|
+|:-------| :-------|
+|link| 0.024860|
+|sxsw| 0.018422|
+|ipad| 0.017436|
+|rt| 0.013566|
+|iphone| 0.012953|
+|apple| 0.011431|
+|app| 0.008411|
+|google| 0.008095|
+|store| 0.007743|
+|new| 0.006002|
+
+#### What were the most important features in our tuned Random Forest Model?
+
+![feature_importance](images/feature_importance.png)
+
+It looks like the specific product names were good predictors as well as the conference it was held at and the brand name.
+
+## Conclusions
+
+1. Focus on product mentions within negatvie tweets . Iphone users were commenting a lot on the battery
+
+2. 2nd conclusion.
+
+3. 3rd conclusion.
+
+## Next Steps
+
+Further analyses could provide even more insight into how we can predict the sentiment of tweets:
+
+#### Gather more tweets during that year: 
+This can be done by finding tweets from the same year (around 2013) that mention the same products. This could provide for better modeling.
+
+#### Get up to date tweets on similer products: 
+This can be done by finding tweets for the latest realease of the ipad, iphone, and abndroid devices.
+
+#### Gather data about products from similer companies: 
+There may be tweets about the latest samsung, t-mobile, LG, Motorola phones that we could compare.
 
 
 
