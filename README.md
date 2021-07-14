@@ -122,7 +122,7 @@ The dummy model is showing that if we were to classify every tweet by the most c
 
 #### Training Predictions
 
-![train_pred_base_fsm](images/train_pred_base_fsm.pngv)
+![train_pred_base_fsm](images/train_pred_base_fsm.png)
 
 |scores| precision| recall| f1-score| support|
 |:-------| :-------| :-------| :-------| :-------|
