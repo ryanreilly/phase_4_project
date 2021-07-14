@@ -99,17 +99,11 @@ We did a little preprocessing that we would need for modeling and some further E
 After we preprocessed, we wanted to take a look at the wordclouds for negative tweets to highlight common words used to describe specific products.
 
 ### For negative tweets, how were users describing the iPad?
-
 ![ipad_wordcloud](images/ipad_wordcloud.png)
-
 ### For negative tweets, how were users describing the iphone?
-
 ![iphone_wordcloud](images/iphone_wordcloud.png)
-
 ### For negative tweets, how were users describing the Google?
-
 ![google_wordcloud](images/google_wordcloud.png)
-
 ## Modeling
 
 ### Dummy Model
