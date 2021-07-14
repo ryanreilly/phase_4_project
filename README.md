@@ -90,6 +90,57 @@ Apple looks to have more negative and nuetral tweets than Google.
 
 The iphone and ipad look to have
 
+## Preprocessing
+
+We did a little preprocessing that we would need for modeling and some further EDA. We made a function that converts each tweet to lowercase, removes urls, hashtags and @ references, removes punctuation, removes stopwards, lemmatizes the words, and then joins the words back together. We used a label encoder to convert the classification label from strings to 0,1,2. Then did a train test split so we can have training and testing data. 
+
+## Further EDA Wordclouds
+
+After we preprocessed, we wanted to take a look at the wordclouds for negative tweets to highlight common words used to describe specific products.
+
+### For negative tweets, how were users describing the iPad?
+
+![ipad_wordcloud](images/ipad_wordcloud.png)
+
+### For negative tweets, how were users describing the iphone?
+
+![iphone_wordcloud](images/iphone_wordcloud.png)
+
+### For negative tweets, how were users describing the Google?
+
+![google_wordcloud](images/google_wordcloud.png)
+
+## Modeling
+
+### Dummy Model
+
+![dummy_model](images/dummy_model_cm.png)
+
+The dummy model is showing that if we were to classify every tweet by the most common sentiment (neutral). We would be correct 61% of the time. This can definitley be improved upon through iterative model building.
+
+### Baseline First Simple Model - Random Forest
+
+#### Training Predictions
+
+![train_pred_base_fsm](images.train_pred_base_fsm.png)
+
+|scores| precision| recall| f1-score| support|
+|:-------| :-------| :-------| :-------| :-------|
+|negative| 0.99| 0.99| 0.99| 393|
+|neutral| 0.99| 1.00| 0.99| 3581|
+|positive| 1.00| 0.98| 0.99| 2008|
+| | | | | |
+|accuracy| | | 0.99| 5982|
+|macro avg| 0.99| 0.99| 0.99| 5982|
+|weighted avg| 0.99| 0.99| 0.99| 5982|
+
+
+
+
+
+
+
+
 
 
 
