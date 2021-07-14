@@ -24,7 +24,7 @@ Each row in this dataset represents a unique tweet made a by a user about an App
 |:-------| :-------|
 |tweet_text| The full text of the tweet|
 |emotion_in_tweet_is_directed_at| The product the tweet is directed at|
-is_there_an_emotion_directed_at_a_brand_or_product| The sentiment label of the tweet in 4 classes (positive, negative, neutral, and I can't tell|
+|is_there_an_emotion_directed_at_a_brand_or_product| The sentiment label of the tweet in 4 classes (positive, negative, neutral, and I can't tell|
 
 Taking a look at the info of the dataset, there looks to be nulls in the product column which we will have to deal with. We also may need to convert the tweet column to a string to be used for analysis.
 
@@ -42,7 +42,13 @@ Checking for row duplicates in the tweet column and found 22 of duplicates, thes
 
 ### Classifications
 
-The rows that have the "I can't tell" label are being removed. We don't think those rows don't really tell us anything and it wouldn't be helpful to predict. Finial we renamed the class lables: No emotion toward brand or product = Nuetral, Positive emotion = Positive, and Negative emotion = Negative.
+The rows that have the "I can't tell" label are being removed. We don't think those rows don't really tell us anything and it wouldn't be helpful to predict. Finial we renamed the class lables:
+
+| Original Name | New Name|
+|:-------| :-------|
+|Negative emotion| Negative|
+|No emotion toward brand or product|Nuetral|
+|Positive emotion| Positive|
 
 ## Feature Engineering
 
