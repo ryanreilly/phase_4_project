@@ -122,7 +122,7 @@ The dummy model is showing that if we were to classify every tweet by the most c
 
 #### Training Predictions
 
-![train_pred_base_fsm](images/train_pred_base_fsm.pngv)
+![train_pred_base_fsm](images/train_pred_base_fsm.png)
 
 |scores| precision| recall| f1-score| support|
 |:-------| :-------| :-------| :-------| :-------|
@@ -251,11 +251,11 @@ It looks like the specific product names were good predictors as well as the con
 Further analyses could provide even more insight into how we can predict the sentiment of tweets:
 
 #### Gather more tweets during that year: 
-This can be done by finding tweets from the same year (around 2013) that mention the same products. This could provide for better modeling.
+> This can be done by finding tweets from the same year (around 2013) that mention the same products. This could provide for better modeling.
 
 #### Get up to date tweets on similer products: 
-This can be done by finding tweets for the latest realease of the ipad, iphone, and abndroid devices.
+> This can be done by finding tweets for the latest realease of the ipad, iphone, and abndroid devices.
 
 #### Gather data about products from similer companies: 
-There may be tweets about the latest samsung, t-mobile, LG, Motorola phones that we could compare.
+> There may be tweets about the latest samsung, t-mobile, LG, Motorola phones that we could compare.
 
