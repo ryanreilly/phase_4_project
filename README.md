@@ -6,15 +6,17 @@
 
 ## Overview
 
-This project analyzes data for over 9,000 tweets about product reviews for Apple and Google. Human raters rated the sentiment as positive, negative, or neither. The goal of this analysis is to build an NLP model that will accurately predict the sentiment of a tweet based on the tweets text. This will be done through exploratory data analysis and iterative predictive modeling using classification models. 
+This project analyzes data for over 9,000 tweets about product reviews for Apple and Google. Human raters rated the sentiment as positive, negative, or neither. The goal of this analysis is to build an NLP model that will accurately predict the sentiment of a tweet based on the tweets text. This will be done through exploratory data analysis and iterative predictive modeling using classification models.
 
 ## Business Problem
 
 Apple has hired us to predict the sentiment of tweets about their products. They will use our analysis to gather critical feedback about problems in newly released products. Based on our analysis, we are going to provide recommendations based on the following.
 
-- Which products to manage based on count of negative tweets
-- What people say most often about certain products
-- Identify compettion (Google) and see what is working best/worst
+>Overall brand sentiment
+
+>Product features that are called out in product mentions within negatvie tweets
+
+>Reviewing what users are saying about the competition (Google)
 
 ## Data Understanding
 
@@ -109,6 +111,12 @@ After we preprocessed, we wanted to take a look at the wordclouds for negative t
 ### For negative tweets, how were users describing the Google?
 
 ![google_wordcloud](images/google_wordcloud.png)
+
+### What words decribe the overall sentiment of postive tweets for Apple?
+
+![postive_tweets_apple](images/postive_tweets_apple.png)
+
+It looks like the Apple store gets mentioned a lot in these postive tweets about the company along with the mentions of the app, popup store, and ipad2.
 
 ## Modeling
 
@@ -240,21 +248,24 @@ It looks like the specific product names were good predictors as well as the con
 
 ## Conclusions
 
-1. Focus on product mentions within negatvie tweets . Iphone users were commenting a lot on the battery
+#### 1. Overall brand sentiment. 
+>By looking at both positive and negative tweets, Apple can see how users feel overall about the brand.
 
-2. 2nd conclusion.
+#### 2. Focus on features called out in product mentions within negatvie tweets.
+>Iphone users were commenting a lot on the battery and iPad users were commenting on the design. These are informative in taking the next steps by following up with users to get more information on there tweets.
 
-3. 3rd conclusion.
+#### 3. Review what users are saying about the competition (Google). 
+>By reveiwing what users are saying about other brands' products, this may help Apple with their brand.
 
 ## Next Steps
 
 Further analyses could provide even more insight into how we can predict the sentiment of tweets:
 
 #### Gather more tweets during that year: 
-> This can be done by finding tweets from the same year (around 2013) that mention the same products. This could provide for better modeling.
+> This can be done by finding tweets from the same year (around 2013) that mention the same products. This could provide for better modeling. We could create a model with more balanced classes to better predict negative and positive tweets.
 
 #### Get up to date tweets on similer products: 
-> This can be done by finding tweets for the latest realease of the ipad, iphone, and abndroid devices.
+> This can be done by finding tweets for the latest realease of the ipad, iphone, and Android devices. We could see how sentiment changes over time for products.
 
 #### Gather data about products from similer companies: 
 > There may be tweets about the latest samsung, t-mobile, LG, Motorola phones that we could compare.
