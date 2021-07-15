@@ -6,7 +6,7 @@
 
 ## Overview
 
-This project analyzes data for over 9,000 tweets about product reviews for Apple and Google. Human raters rated the sentiment as positive, negative, or neither. The goal of this analysis is to build an NLP model that will accurately predict the sentiment of a tweet based on the tweets text. This will be done through exploratory data analysis and iterative predictive modeling using classification models.
+This project analyzes data for almost 9,000 tweets about product reviews for Apple and Google. Human raters rated the sentiment as positive, negative, or neutral. The goal of this analysis is to build an NLP model that will accurately predict the sentiment of a tweet based on the tweet's text. This will be done through exploratory data analysis and iterative predictive modeling using classification models. 
 
 ## Business Problem
 
