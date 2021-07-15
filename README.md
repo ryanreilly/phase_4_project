@@ -60,7 +60,7 @@ Creat a new column called that groups the products together by brand under a col
 
 ### What are the classes for the outcome?
 
-![classes](images/classes.png)
+![classes2](images/classes2.png)
 
 ### How are the length of the tweets distributed?
 
@@ -82,13 +82,13 @@ The most common stopwords are the, to, at, and for, which is not suprising.
 
 ### How are the sentiments for brand?
 
-![brand](images/brand.png)
+![brand2](images/brand2.png)
 
 Apple looks to have more negative and nuetral tweets than Google.
 
 ### How many negative sentiments are there for each Apple mention?
 
-![apple_product](images/apple_product.png)
+![apple_product2](images/apple_product2.png)
 
 The iphone and ipad look to have
 
