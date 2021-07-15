@@ -1,4 +1,4 @@
-# Brands and Product Emotions
+# Apple Sentiment Analysis
 
 **Authors:** Kevin McDonough, Brad Horn, Ryan Reilly
 
@@ -6,19 +6,21 @@
 
 ## Overview
 
-This project analyzes data for over 9,000 tweets about product reviews for Apple and Google. Human raters rated the sentiment as positive, negative, or neither. The goal of this analysis is to build an NLP model that will accurately predict the sentiment of a tweet based on the tweets text. This will be done through exploratory data analysis and iterative predictive modeling using classification models. 
+This project analyzes data for almost 9,000 tweets about product reviews for Apple and Google. Human raters rated the sentiment as positive, negative, or neutral. The goal of this analysis is to build an NLP model that will accurately predict the sentiment of a tweet based on the tweet's text. This will be done through exploratory data analysis and iterative predictive modeling using classification models. 
 
 ## Business Problem
 
 Apple has hired us to predict the sentiment of tweets about their products. They will use our analysis to gather critical feedback about problems in newly released products. Based on our analysis, we are going to provide recommendations based on the following.
 
-- Which products to manage based on count of negative tweets
-- What people say most often about certain products
-- Identify compettion (Google) and see what is working best/worst
+>Overall brand sentiment
+
+>Product features that are called out in product mentions within negatvie tweets
+
+>Reviewing what users are saying about the competition (Google)
 
 ## Data Understanding
 
-Each row in this dataset represents a unique tweet made a by a user about an Apple or Google procduct. There are three columns in the dataset. Each feature and its description is listed below.
+Each row in this dataset represents a unique tweet made a by a user about an Apple or Google product. There are three columns in the dataset. Each feature and its description are listed below.
 
 | Feature | Description|
 |:-------| :-------|
@@ -28,7 +30,7 @@ Each row in this dataset represents a unique tweet made a by a user about an App
 
 Taking a look at the info of the dataset, there looks to be nulls in the product column which we will have to deal with. We also may need to convert the tweet column to a string to be used for analysis.
 
-There are 4 classes for our target variable. There looks to be a good balance of no emotion(neutral) and postive tweets but there are few negative tweets so we will need to implement a re-sampling technique in our models. For those tweets that are labeld as "I can't tell", we will remove these rows from the dataset for our analysis and modeling.
+There are 4 classes for our target variable. There looks to be a good balance of no emotion (neutral) and postive tweets but there are very few negative tweets so we will need to implement a re-sampling technique in our models. For those tweets that are labeld as "I can't tell", we will remove these rows from the dataset for our analysis and modeling.
 
 ## Data Preparation
 
@@ -47,18 +49,18 @@ The rows that have the "I can't tell" label are being removed. We don't think th
 | Original Name | New Name|
 |:-------| :-------|
 |Negative emotion| Negative|
-|No emotion toward brand or product|Nuetral|
+|No emotion toward brand or product|Neutral|
 |Positive emotion| Positive|
 
 ## Feature Engineering
 
-Creat a new column called that groups the products together by brand under a column for exploratory analysis.
+Created a new column called brand that groups the products together by brand under a column for exploratory analysis.
 
 ## Exploratory Data Analysis
 
 ### What are the classes for the outcome?
 
-![classes](images/classes.png)
+![classes2](images/classes2.png)
 
 ### How are the length of the tweets distributed?
 
@@ -70,7 +72,7 @@ The average tweet length is around 120 characters.
 
 ![word_hist](images/word_hist.png)
 
-There looks to be around 20 words.
+There looks to be around 20 words per tweet.
 
 ### What are the most common stop words?
 
@@ -80,13 +82,13 @@ The most common stopwords are the, to, at, and for, which is not suprising.
 
 ### How are the sentiments for brand?
 
-![brand](images/brand.png)
+![brand2](images/brand2.png)
 
-Apple looks to have more negative and nuetral tweets than Google.
+Apple looks to have more negative and neutral tweets than Google.
 
 ### How many negative sentiments are there for each Apple mention?
 
-![apple_product](images/apple_product.png)
+![apple_product2](images/apple_product2.png)
 
 The iphone and ipad look to have
 
@@ -102,13 +104,25 @@ After we preprocessed, we wanted to take a look at the wordclouds for negative t
 
 ![ipad_wordcloud](images/ipad_wordcloud.png)
 
+The design of the iPad came up a lot in negative tweets. 
+
 ### For negative tweets, how were users describing the iphone?
 
 ![iphone_wordcloud](images/iphone_wordcloud.png)
 
-### For negative tweets, how were users describing the Google?
+It looks like users were unhappy with the battery life of the iPhone that was released. 
+
+### How were users describing Google products?
 
 ![google_wordcloud](images/google_wordcloud.png)
+
+It looks like circles was mentioned a lot. Circles is related to a Google+, thier social network, that ended up getting discontinued. 
+
+### What words decribe the overall sentiment of postive tweets for Apple?
+
+![postive_tweets_apple](images/postive_tweets_apple.png)
+
+It looks like the Apple store gets mentioned a lot in these postive tweets about the company along with the mentions of the app, popup store, and ipad2.
 
 ## Modeling
 
@@ -148,7 +162,7 @@ The dummy model is showing that if we were to classify every tweet by the most c
 |macro avg| 0.67| 0.49| 0.52| 2565|
 |weighted avg| 0.68| 0.69| 0.66| 2565|
 
-We are focused on increasing the recall of the negative sentiment and on the baseline model the recall is 0.16.
+We are focused on increasing the f1-score of the negative sentiment and on the baseline model the f1-score is .26
 
 ### Models Using Hyperparameter Tuning and Pipelines
 
@@ -180,7 +194,7 @@ We are focused on increasing the recall of the negative sentiment and on the bas
 |macro avg| 0.58| 0.54| 0.55| 2565|
 |weighted avg| 0.67| 0.68| 0.67| 2565|
 
-The overall accuracy looks to be better for the Random forest model when compared to the Naive Bayes model. While both models tend to do better in recall, Naive Bayes does considerably better than Random Forest. However, we feel that there is too much accuracy we are giving up by using the Naive Bayes Model. We will move forward with the random forest model. But first, we will try a Nueral Network model.
+The overall accuracy and f-1 score for negative tweets looks to be better for the Random forest model when compared to the Naive Bayes model. We will move forward with the random forest model. But first, we will try a Nueral Network model. 
 
 #### Neural Network
 
@@ -215,7 +229,7 @@ While the accuracy of the Nueral Network improved, it did not do a good job of p
 |macro avg| 0.58| 0.54| 0.55| 2565|
 |weighted avg| 0.67| 0.68| 0.67| 2565|
 
-While our accuracy dipped from 0.69 in our baseline model to 0.68 in our tuned model, we did see a significant increase in our recall score. Our recall score increased from 0.16 to 0.28, an increase of 75%. This was the result of employing SMOTE, our resampling technique to create more observations of the negative class.
+While our accuracy dipped from .69 in our baseline model to .68 in our tuned model, we did see a significant increase in our f-1 score. Our f-1 score increased from .26 to .33, an increase of 27%. This was the result of employing SMOTE, our resampling technique to create more observations of the negative class. 
 
 ### Feature importance
 
@@ -240,21 +254,24 @@ It looks like the specific product names were good predictors as well as the con
 
 ## Conclusions
 
-1. Focus on product mentions within negatvie tweets . Iphone users were commenting a lot on the battery
+#### 1. Overall brand sentiment. 
+>By looking at both positive and negative tweets, Apple can see how users feel overall about the brand.
 
-2. 2nd conclusion.
+#### 2. Focus on features called out in product mentions within negatvie tweets.
+>Iphone users were commenting a lot on the battery and iPad users were commenting on the design. These are informative in taking the next steps by following up with users to get more information on there tweets.
 
-3. 3rd conclusion.
+#### 3. Review what users are saying about the competition (Google). 
+>By reveiwing what users are saying about other brands' products, this may help Apple with their brand.
 
 ## Next Steps
 
 Further analyses could provide even more insight into how we can predict the sentiment of tweets:
 
 #### Gather more tweets during that year: 
-> This can be done by finding tweets from the same year (around 2013) that mention the same products. This could provide for better modeling.
+> This can be done by finding tweets from the same year (around 2013) that mention the same products. This could provide for better modeling. We could create a model with more balanced classes to better predict negative and positive tweets.
 
 #### Get up to date tweets on similer products: 
-> This can be done by finding tweets for the latest realease of the ipad, iphone, and abndroid devices.
+> This can be done by finding tweets for the latest realease of the ipad, iphone, and Android devices. We could see how sentiment changes over time for products.
 
 #### Gather data about products from similer companies: 
 > There may be tweets about the latest samsung, t-mobile, LG, Motorola phones that we could compare.
