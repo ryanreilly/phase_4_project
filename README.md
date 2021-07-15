@@ -30,7 +30,7 @@ Each row in this dataset represents a unique tweet made a by a user about an App
 
 Taking a look at the info of the dataset, there looks to be nulls in the product column which we will have to deal with. We also may need to convert the tweet column to a string to be used for analysis.
 
-There are 4 classes for our target variable. There looks to be a good balance of no emotion(neutral) and postive tweets but there are few negative tweets so we will need to implement a re-sampling technique in our models. For those tweets that are labeld as "I can't tell", we will remove these rows from the dataset for our analysis and modeling.
+There are 4 classes for our target variable. There looks to be a good balance of no emotion (neutral) and postive tweets but there are very few negative tweets so we will need to implement a re-sampling technique in our models. For those tweets that are labeld as "I can't tell", we will remove these rows from the dataset for our analysis and modeling.
 
 ## Data Preparation
 
