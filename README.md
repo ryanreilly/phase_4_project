@@ -1,4 +1,4 @@
-# Brands and Product Emotions
+# Apple Sentiment Analysis
 
 **Authors:** Kevin McDonough, Brad Horn, Ryan Reilly
 
