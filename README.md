@@ -20,7 +20,7 @@ Apple has hired us to predict the sentiment of tweets about their products. They
 
 ## Data Understanding
 
-Each row in this dataset represents a unique tweet made a by a user about an Apple or Google procduct. There are three columns in the dataset. Each feature and its description is listed below.
+Each row in this dataset represents a unique tweet made a by a user about an Apple or Google product. There are three columns in the dataset. Each feature and its description are listed below.
 
 | Feature | Description|
 |:-------| :-------|
@@ -49,12 +49,12 @@ The rows that have the "I can't tell" label are being removed. We don't think th
 | Original Name | New Name|
 |:-------| :-------|
 |Negative emotion| Negative|
-|No emotion toward brand or product|Nuetral|
+|No emotion toward brand or product|Neutral|
 |Positive emotion| Positive|
 
 ## Feature Engineering
 
-Creat a new column called that groups the products together by brand under a column for exploratory analysis.
+Created a new column called brand that groups the products together by brand under a column for exploratory analysis.
 
 ## Exploratory Data Analysis
 
@@ -72,7 +72,7 @@ The average tweet length is around 120 characters.
 
 ![word_hist](images/word_hist.png)
 
-There looks to be around 20 words.
+There looks to be around 20 words per tweet.
 
 ### What are the most common stop words?
 
@@ -84,7 +84,7 @@ The most common stopwords are the, to, at, and for, which is not suprising.
 
 ![brand2](images/brand2.png)
 
-Apple looks to have more negative and nuetral tweets than Google.
+Apple looks to have more negative and neutral tweets than Google.
 
 ### How many negative sentiments are there for each Apple mention?
 
@@ -104,13 +104,19 @@ After we preprocessed, we wanted to take a look at the wordclouds for negative t
 
 ![ipad_wordcloud](images/ipad_wordcloud.png)
 
+The design of the iPad came up a lot in negative tweets. 
+
 ### For negative tweets, how were users describing the iphone?
 
 ![iphone_wordcloud](images/iphone_wordcloud.png)
 
-### For negative tweets, how were users describing the Google?
+It looks like users were unhappy with the battery life of the iPhone that was released. 
+
+### How were users describing Google products?
 
 ![google_wordcloud](images/google_wordcloud.png)
+
+It looks like circles was mentioned a lot. Circles is related to a Google+, thier social network, that ended up getting discontinued. 
 
 ### What words decribe the overall sentiment of postive tweets for Apple?
 
@@ -156,7 +162,7 @@ The dummy model is showing that if we were to classify every tweet by the most c
 |macro avg| 0.67| 0.49| 0.52| 2565|
 |weighted avg| 0.68| 0.69| 0.66| 2565|
 
-We are focused on increasing the recall of the negative sentiment and on the baseline model the recall is 0.16.
+We are focused on increasing the f1-score of the negative sentiment and on the baseline model the f1-score is .26
 
 ### Models Using Hyperparameter Tuning and Pipelines
 
@@ -188,7 +194,7 @@ We are focused on increasing the recall of the negative sentiment and on the bas
 |macro avg| 0.58| 0.54| 0.55| 2565|
 |weighted avg| 0.67| 0.68| 0.67| 2565|
 
-The overall accuracy looks to be better for the Random forest model when compared to the Naive Bayes model. While both models tend to do better in recall, Naive Bayes does considerably better than Random Forest. However, we feel that there is too much accuracy we are giving up by using the Naive Bayes Model. We will move forward with the random forest model. But first, we will try a Nueral Network model.
+The overall accuracy and f-1 score for negative tweets looks to be better for the Random forest model when compared to the Naive Bayes model. We will move forward with the random forest model. But first, we will try a Nueral Network model. 
 
 #### Neural Network
 
@@ -223,7 +229,7 @@ While the accuracy of the Nueral Network improved, it did not do a good job of p
 |macro avg| 0.58| 0.54| 0.55| 2565|
 |weighted avg| 0.67| 0.68| 0.67| 2565|
 
-While our accuracy dipped from 0.69 in our baseline model to 0.68 in our tuned model, we did see a significant increase in our recall score. Our recall score increased from 0.16 to 0.28, an increase of 75%. This was the result of employing SMOTE, our resampling technique to create more observations of the negative class.
+While our accuracy dipped from .69 in our baseline model to .68 in our tuned model, we did see a significant increase in our f-1 score. Our f-1 score increased from .26 to .33, an increase of 27%. This was the result of employing SMOTE, our resampling technique to create more observations of the negative class. 
 
 ### Feature importance
 
